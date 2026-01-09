@@ -1,0 +1,8 @@
+@use '@/styles/_variables' as *;
+
+.conditionsEditor {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 1px;
+}
+
+// Other styles appear unused in the Vue component template, omitting them.

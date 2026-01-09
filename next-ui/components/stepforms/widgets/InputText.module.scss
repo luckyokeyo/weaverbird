@@ -1,0 +1,55 @@
+@use '@/styles/_variables' as *;
+
+.widgetInputTextContainer {
+  @extend %form-widget__container;
+}
+
+.widgetInputText {
+  @extend %form-widget__field;
+
+  &:focus-within {
+    @extend %form-widget__field--focused;
+  }
+
+  &::placeholder {
+    color: $grey;
+  }
+}
+
+.widgetInputTextLabel {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.widgetInputTextLabel label {
+  @extend %form-widget__label;
+}
+
+.widgetInputTextDocIcon {
+  margin-left: 5px;
+  color: $base-color;
+  font-size: 14px;
+
+  &:hover {
+    color: $active-color;
+  }
+}
+
+.widgetInputWithVariables {
+  padding-right: 35px;
+  text-overflow: ellipsis;
+}
+
+.msgError {
+  color: $error;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.msgWarning {
+  color: #ff9800; // Warning color
+  font-size: 12px;
+  margin-top: 5px;
+}

@@ -1,0 +1,21 @@
+@use '@/styles/_variables' as *;
+
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.columnInput,
+.operatorInput,
+.valueInput {
+  margin: 4px;
+  margin-right: 0;
+  width: 33%;
+
+  &:last-child {
+    margin-right: 4px;
+  }
+}
+
+// Deep selector equivalents can be handled by passing classes or global styles if necessary.
+// For now, scoping to module.
