@@ -1,0 +1,19 @@
+@use '@/styles/variables';
+
+.sortColumn {
+  margin-bottom: 20px;
+}
+
+.widgetSortColumnContainer {
+    @include variables.form-widget__container;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.columnInput {
+    flex: 1;
+}
+
+.orderInput {
+    width: 120px;
+}

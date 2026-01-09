@@ -1,0 +1,27 @@
+@use '@/styles/variables';
+
+.toReplace {
+  margin-bottom: 20px;
+}
+
+.referenceColumnInput {
+  margin-bottom: 20px;
+}
+
+.groupbyInput {
+  margin-bottom: 20px;
+}
+
+.widgetCumSumContainer {
+    @include variables.form-widget__container;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.valueColumn {
+    flex: 1;
+}
+
+.newColumn {
+    flex: 1;
+}

@@ -1,0 +1,89 @@
+@use '@/styles/variables';
+
+.widgetCheckbox {
+  align-items: center;
+  display: flex;
+  margin-bottom: 20px;
+  cursor: pointer;
+
+  &:active,
+  &:focus,
+  &:hover {
+    &::after {
+      opacity: 0.3;
+    }
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    order: -1;
+  }
+
+  &::before {
+    flex: 0 auto;
+    box-shadow: 0 0 0 2px variables.$base-color inset;
+    height: 24px;
+    width: 24px;
+    min-width: 24px;
+  }
+
+  &::after {
+    box-shadow: 3px -3px 0 0 variables.$base-color inset;
+    height: 8px;
+    margin-left: -18px;
+    margin-right: 6px;
+    margin-top: -3px;
+    opacity: 0.1;
+    transform: rotate(-45deg);
+    width: 12px;
+  }
+}
+
+.widgetCheckboxChecked {
+  &::before {
+    box-shadow: 0 0 0 2px variables.$base-color inset;
+  }
+
+  &::after {
+    box-shadow: 3px -3px 0 0 variables.$base-color inset;
+    opacity: 1;
+  }
+
+  &:active,
+  &:focus,
+  &:hover {
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+.widgetCheckboxLabel {
+  @include variables.form-widget__label;
+  flex: 1;
+  margin-top: 0;
+  margin-bottom: 0;
+  align-self: center;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.widgetCheckboxCropped {
+  .widgetCheckboxLabel {
+    display: flex;
+    overflow: hidden;
+  }
+  .widgetCheckboxLabelContent {
+    flex: 0 auto;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .widgetCheckboxLabelInfo {
+    flex: 0 auto;
+  }
+}
+
+.widgetCheckboxLabelContent {}
+.widgetCheckboxLabelInfo {}

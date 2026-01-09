@@ -1,0 +1,27 @@
+@use '@/styles/variables';
+
+.totals {
+  margin-bottom: 20px;
+}
+
+.aggregationsInput {
+  margin-bottom: 20px;
+}
+
+.groupsInput {
+  margin-bottom: 20px;
+}
+
+.totalDimensionsWidget {
+    @include variables.form-widget__container;
+    margin-bottom: 0;
+}
+
+.totalColumnInput {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.totalRowsLabelInput {
+    width: 100%;
+}

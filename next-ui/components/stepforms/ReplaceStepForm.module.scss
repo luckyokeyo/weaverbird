@@ -1,0 +1,23 @@
+@use '@/styles/variables';
+
+.searchColumnInput {
+  margin-bottom: 20px;
+}
+
+.toReplace {
+  margin-bottom: 20px;
+}
+
+.widgetReplaceContainer {
+    @include variables.form-widget__container;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.valueToReplace {
+    flex: 1;
+}
+
+.newValue {
+    flex: 1;
+}

@@ -1,0 +1,9 @@
+@use '@/styles/variables';
+
+.widgetCodeEditor {
+    @include variables.form-widget__container;
+
+    // Editor styles
+    border: 1px solid #ccc;
+    min-height: 200px;
+}

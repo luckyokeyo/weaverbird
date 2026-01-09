@@ -1,0 +1,24 @@
+@use '@/styles/variables';
+
+.widgetMultiselectContainer {
+  @include variables.form-widget__container;
+  position: relative;
+
+  // Align items if row direction needed, but base styles use column.
+  // The Vue scoped style said:
+  // .widget-multiselect__container { align-items: center; flex-direction: row; } in AggregationWidget scope!
+  // But here in MultiselectWidget it's just extends form-widget__container.
+}
+
+.label {
+  @include variables.form-widget__label;
+}
+
+.msgError {
+  color: variables.$error;
+  font-size: 12px;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

@@ -1,0 +1,219 @@
+@use '@/styles/variables';
+
+.ifthenelseWidget {
+  .ifthenelseWidgetInput {
+    margin: 0;
+    background-color: #e9eff5;
+    padding: 5px;
+    border: 1px solid variables.$grey-light;
+    border-radius: 5px;
+  }
+
+  // Scoped deep selector replacement for .widget-input-text if needed
+  :global(.widget-input-text) {
+    background: white;
+  }
+
+  :global(.filter-editor) {
+    width: 100%;
+  }
+
+  :global(.conditions-group) {
+    padding-bottom: 0;
+  }
+
+  :global(.conditions-group:not(.conditions-group--with-switch)) {
+    padding-top: 0;
+  }
+
+  :global(.condition-row) {
+    background-color: #e9eff5;
+  }
+}
+
+.ifthenelseWidgetContainer {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f9fbfc;
+  margin-bottom: 15px; // Replaces + .ifthenelse-widget { margin-top: 15px; } logic effectively if each has margin
+}
+
+.ifthenelseWidgetContainerCollapsed {
+  background-color: #fbfbfb;
+
+  .ifthenelseWidgetRow:not(:first-child) {
+    display: none;
+  }
+
+  .ifthenelseWidgetCollapseButton {
+    transform: translateY(-50%) rotate(180deg);
+    &:before {
+      border-color: #d9d9d9 transparent transparent;
+    }
+  }
+
+  .ifthenelseWidgetTag {
+    background-color: variables.$grey-light;
+    color: black;
+  }
+}
+
+.ifthenelseWidgetRow {
+  position: relative;
+  padding: 0 10px 0 15px;
+}
+
+.ifthenelseWidgetHeader {
+  position: relative;
+  padding: 0 10px 0 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  .ifthenelseWidgetTag,
+  .ifthenelseWidgetCollapseText,
+  .ifthenelseWidgetRemove {
+    flex: 0 auto;
+  }
+
+  .ifthenelseWidgetCollapseDescription {
+    flex: 1;
+  }
+}
+
+.ifthenelseWidgetTag {
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: variables.$active-color;
+  font-size: 12px;
+  line-height: 1.67;
+  display: inline-flex;
+  border-radius: 2px;
+  padding: 0 6px;
+  background-color: #e2ebf5;
+  margin: 15px 0 10px; // From .ifthenelse-widget__row .ifthenelse-widget__tag
+}
+
+.ifthenelseWidgetCollapseButton {
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px 5px;
+  transition: transform 0.4s;
+  cursor: pointer;
+  &:before {
+    content: '';
+    display: block;
+    border-color: #b8cce0 transparent transparent;
+    border-width: 5px 5px 0;
+    border-style: solid;
+  }
+}
+
+.ifthenelseWidgetCollapseDescription {
+  padding: 0 10px;
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  strong {
+    font-size: 10px;
+  }
+
+  .empty {
+    color: variables.$grey-medium;
+  }
+}
+
+.ifthenelseWidgetCollapseText {
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: variables.$active-color;
+  letter-spacing: 1px;
+  font-size: 10px;
+  cursor: pointer;
+  &:hover {
+    color: black;
+  }
+}
+
+.ifthenelseWidgetRemove {
+  color: variables.$grey-medium;
+  cursor: pointer;
+  &:hover {
+    color: black;
+  }
+}
+
+.ifthenelseWidgetAdd {
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: variables.$active-color;
+  letter-spacing: 1px;
+  font-size: 10px;
+  cursor: pointer;
+  &:hover {
+    color: black;
+  }
+  padding: 5px;
+}
+
+// Lines
+.ifthenelseWidgetRowLink {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.ifthenelseWidgetRowLinkTop,
+.ifthenelseWidgetRowLinkBottom {
+  height: 50%;
+  width: 0;
+  border-left: 1px solid #d7e5f3;
+}
+
+.ifthenelseWidgetRowLinkDashed {
+  border-left-style: dashed;
+}
+
+.ifthenelseWidgetRowLinkMiddleDashed {
+  border-bottom-style: dashed;
+}
+
+.ifthenelseWidgetRowLinkHidden {
+  height: 0;
+}
+
+.ifthenelseWidgetRowLinkMiddle {
+  height: 0;
+  width: 10px;
+  border-bottom: 1px solid #d7e5f3;
+}
+
+.ifthenelseWidgetRowLinkFilter {
+  top: -10px;
+  .ifthenelseWidgetRowLinkTop {
+    height: 33px;
+  }
+  .ifthenelseWidgetRowLinkBottom {
+    height: 100%;
+  }
+}
+
+.ifthenelseWidgetFooter {
+  padding: 10px;
+  margin-bottom: 10px;
+  .ifthenelseWidgetRowLink {
+    top: -20px;
+    bottom: -20px;
+  }
+}

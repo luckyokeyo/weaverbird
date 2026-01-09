@@ -1,0 +1,17 @@
+@use '@/styles/variables';
+
+.widgetToRenameContainer {
+  background-color: white;
+  display: flex;
+  min-height: 45px;
+  width: 100%;
+  gap: 10px; // Add some gap between the two inputs
+}
+
+.columnToRename {
+  flex: 1;
+}
+
+.newColumn {
+  flex: 1;
+}
