@@ -41,6 +41,7 @@ export interface BaseStepFormProps<StepType extends PipelineStep> {
   onFormSaved: (step: StepType) => void;
   onBack: () => void;
   title?: string;
+  onSetSelectedColumns?: (args: { column: string }) => void;
 }
 
 export function useStepForm<StepType extends PipelineStep>({
@@ -94,6 +95,7 @@ export function useStepForm<StepType extends PipelineStep>({
     editedStep,
     setEditedStep,
     errors,
+    setErrors,
     submit,
     validate,
   };

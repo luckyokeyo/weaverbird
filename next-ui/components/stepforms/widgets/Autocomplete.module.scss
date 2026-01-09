@@ -1,43 +1,18 @@
-@use '@/styles/_variables' as *;
+@use '@/styles/variables';
 
 .widgetAutocompleteContainer {
-  @extend %form-widget__container;
-  position: relative;
+  @include variables.form-widget__container;
 }
 
 .widgetAutocompleteLabel {
-  @extend %form-widget__label;
-}
-
-.multiselect {
-  color: $base-color-light;
-  font-size: 14px;
-}
-
-.optionContainer {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.optionExample {
-  font-style: italic;
-}
-
-.optionContainerDisabled {
-  &,
-  &:hover {
-    background: #ededed;
-    color: #a6a6a6;
-  }
-  cursor: not-allowed;
-  .optionTitle {
-    pointer-events: none;
-  }
+  @include variables.form-widget__label;
 }
 
 .msgError {
-  color: $error;
+  color: variables.$error;
   font-size: 12px;
   margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }

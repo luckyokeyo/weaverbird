@@ -1,6 +1,6 @@
 import React from 'react';
 
-// Placeholder for now
+// Stub for NewDateInput
 export default function NewDateInput(props: any) {
-  return <input type="date" {...props} />;
+  return <div>NewDateInput Stub</div>;
 }

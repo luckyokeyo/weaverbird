@@ -6,7 +6,7 @@
 }
 
 .widgetFormActionButton {
-  @extend %button-default;
+  @include variables.button-default;
 }
 
 .widgetFormActionButtonValidate {

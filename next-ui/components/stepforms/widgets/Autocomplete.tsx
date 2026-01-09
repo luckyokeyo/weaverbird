@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ReactSelect, { SingleValue } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
-import classNames from 'classnames';
 import FAIcon from '@/components/FAIcon';
 import styles from './Autocomplete.module.scss';
 import type { VariableDelimiters, VariablesBucket } from '@/lib/variables';
@@ -21,6 +20,7 @@ interface AutocompleteWidgetProps {
   allowCustom?: boolean;
   onChange: (newValue: string | object | undefined | null) => void;
   messageError?: string;
+  dataPath?: string;
 }
 
 export default function AutocompleteWidget({
@@ -38,6 +38,7 @@ export default function AutocompleteWidget({
   allowCustom,
   onChange,
   messageError,
+  dataPath,
 }: AutocompleteWidgetProps) {
   // Transform options to ReactSelect format { label, value }
   const getOptionLabel = (option: any) => {
