@@ -1,0 +1,257 @@
+@use '@/styles/_variables' as *;
+
+$blue: $active-color;
+$brown-grey: $grey;
+$blue-extra-light: $active-color-faded-3;
+$grey-light-2: $grey-extra-light;
+
+$conditions-group-top-margin: 20px;
+$conditions-group-top-padding: 20px;
+$conditions-group-left-padding: 20px;
+$conditions-group-child-left-padding: 30px;
+$conditions-group-bottom-right-padding: 15px;
+$conditions-group-border-width: 1px;
+
+.conditionsGroup {
+  position: relative;
+  padding-top: $conditions-group-top-padding;
+  padding-bottom: $conditions-group-bottom-right-padding;
+}
+
+.childGroup .conditionsGroup {
+  padding-left: $conditions-group-child-left-padding;
+  padding-right: $conditions-group-bottom-right-padding;
+}
+
+.withSwitch {
+  padding-top: 40px;
+  padding-left: $conditions-group-left-padding;
+}
+
+.childGroup .withSwitch {
+  padding-left: $conditions-group-child-left-padding;
+}
+
+.switch {
+  left: 0;
+  position: absolute;
+  top: 10px;
+}
+
+.childGroup .switch {
+  left: 10px;
+}
+
+.switchButtons {
+  box-sizing: border-box;
+  display: inline-flex;
+  z-index: 1;
+}
+
+.delete {
+  color: $grey-medium;
+  font-size: 16px;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+
+  &:hover {
+    color: #000;
+    cursor: pointer;
+  }
+}
+
+.switchButton {
+  background-color: $grey-light-2;
+  border-radius: 4px 0 0 4px;
+  color: $brown-grey;
+  cursor: pointer;
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  justify-content: center;
+  padding: 6px 8px;
+  text-transform: uppercase;
+  width: 40px;
+
+  &:last-child {
+    border-radius: 0 4px 4px 0;
+  }
+
+  &:last-child.active {
+    box-shadow: inset 10px 0px 10px -5px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.active {
+  background-color: $blue;
+  box-shadow: inset -10px 0px 10px -5px rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+
+.actionButtons {
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.childGroup {
+  position: relative;
+  background: $blue-extra-light;
+  border: $conditions-group-border-width solid $grey-light-2;
+  border-radius: 3px;
+  margin-top: $conditions-group-top-margin;
+
+  .conditionRow {
+    // darken($blue-extra-light, 5%) is approx #e1e9f1 if $blue-extra-light is #e9eff5
+    background-color: darken($blue-extra-light, 5%);
+  }
+}
+
+.switchLink {
+  border-left: 1px solid $blue;
+  height: 50%;
+  position: absolute;
+  left: 10px;
+  top: 100%;
+}
+
+.input {
+  height: 40px;
+  flex-grow: 1;
+  font-size: 14px;
+  margin: 3px;
+  padding: 8px 10px;
+}
+
+.addButton {
+  color: $blue;
+  margin: 5px;
+
+  &:hover {
+    color: black;
+    cursor: pointer;
+  }
+}
+
+$condition-row-margin: 10px;
+$condition-row-border-width: 1px;
+
+.conditionRow {
+  align-items: center;
+  background-color: $blue-extra-light;
+  border: $condition-row-border-width solid $grey-light-2;
+  border-radius: 3px;
+  display: flex;
+  margin: $condition-row-margin 0;
+  position: relative;
+}
+
+.conditionRowContent {
+  flex: 1;
+  width: 100%;
+}
+
+.conditionRowDelete {
+  color: $grey-medium;
+  font-size: 16px;
+  margin: 0 12px;
+
+  &:hover {
+    color: #000;
+    cursor: pointer;
+  }
+}
+
+.conditionRowLink {
+  $row-link-width: $condition-row-margin + $condition-row-border-width;
+
+  height: calc(100% + #{2 * $condition-row-margin + $condition-row-border-width});
+  left: -$row-link-width;
+  position: absolute;
+  width: $row-link-width;
+
+  .middle {
+    height: 0;
+    width: 100%;
+    border-bottom: 1px solid $blue;
+  }
+
+  .top,
+  .bottom {
+    height: 50%;
+    border-left: 1px solid $blue;
+  }
+}
+
+.conditionsGroupLink {
+  $link-width: calc($conditions-group-top-margin / 2) + 2 * $conditions-group-border-width +
+    calc($conditions-group-left-padding / 2);
+
+  display: flex;
+  flex-direction: column;
+  top: -$conditions-group-top-margin;
+
+  height: calc(100% + #{$conditions-group-top-margin + 2 * $conditions-group-border-width});
+  left: -1 * calc($conditions-group-top-margin / 2) - $conditions-group-border-width;
+  position: absolute;
+  width: $link-width;
+
+  .middle {
+    height: 0;
+    width: 100%;
+    border-bottom: 1px solid $blue;
+  }
+
+  .top {
+    // Position the middle link centered to the operator buttons
+    height: $conditions-group-top-margin + $conditions-group-top-padding;
+  }
+
+  .bottom {
+    flex: 1;
+    border-left: 1px solid $blue;
+  }
+
+  .top,
+  .bottom {
+    border-left: 1px solid $blue;
+  }
+}
+
+// Last link is dashed, to the action buttons
+.conditionRowLinkLast {
+  .bottom {
+    border-left-style: dashed;
+  }
+}
+
+.conditionsGroupLinkLast {
+  .bottom {
+    border-left-style: dashed;
+  }
+}
+
+.actionButtonsLink {
+  $action-button-link-width: $condition-row-margin;
+
+  height: 100%;
+  left: -$action-button-link-width;
+  position: absolute;
+  width: $action-button-link-width;
+
+  .top {
+    height: 50%;
+    border-left: 1px dashed $blue;
+  }
+
+  .middle {
+    height: 0;
+    width: 100%;
+    border-bottom: 1px dashed $blue;
+  }
+}

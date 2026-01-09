@@ -1,0 +1,43 @@
+@use '@/styles/_variables' as *;
+
+.widgetAutocompleteContainer {
+  @extend %form-widget__container;
+  position: relative;
+}
+
+.widgetAutocompleteLabel {
+  @extend %form-widget__label;
+}
+
+.multiselect {
+  color: $base-color-light;
+  font-size: 14px;
+}
+
+.optionContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.optionExample {
+  font-style: italic;
+}
+
+.optionContainerDisabled {
+  &,
+  &:hover {
+    background: #ededed;
+    color: #a6a6a6;
+  }
+  cursor: not-allowed;
+  .optionTitle {
+    pointer-events: none;
+  }
+}
+
+.msgError {
+  color: $error;
+  font-size: 12px;
+  margin-top: 5px;
+}
