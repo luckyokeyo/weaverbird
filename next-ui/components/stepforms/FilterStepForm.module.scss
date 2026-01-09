@@ -1,0 +1,22 @@
+@use '@/styles/variables';
+
+.filterForm {
+  // Styles from Vue
+  // .widget-list__body .widget-list__icon { top: 5px; }
+  // We need to target specific children or use global overrides if structure matches.
+  // The structure of FilterSimpleConditionWidget uses ListWidget (actually no, it uses ConditionsEditor which might use ListWidget).
+  // FilterEditor uses ConditionsEditor.
+
+  // Vue: .filter-form
+
+}
+
+.filterFormInfo {
+  margin-bottom: 20px;
+  @include variables.main-font-style;
+  font-size: 14px;
+}
+
+// .filter-form-headers__container and .filter-form-header were scoped in Vue but seemingly unused in template?
+// Ah wait, FilterSimpleCondition might use them? Or they were leftovers.
+// Let's check FilterSimpleConditionWidget.

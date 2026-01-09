@@ -1,0 +1,15 @@
+@use '@/styles/variables';
+
+.widgetFormAction {
+  display: flex;
+  flex-direction: column;
+}
+
+.widgetFormActionButton {
+  @include variables.button-default;
+}
+
+.widgetFormActionButtonValidate {
+  background-color: variables.$active-color;
+  margin-bottom: 20px;
+}

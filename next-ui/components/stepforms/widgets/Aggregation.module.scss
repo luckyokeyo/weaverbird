@@ -1,0 +1,31 @@
+@use '@/styles/variables';
+
+.widgetAggregationContainer {
+  @include variables.form-widget__container;
+  margin-bottom: 0;
+  padding: 0;
+
+  legend {
+    display: none;
+  }
+}
+
+.columnsInput {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+
+  // Need to target label inside MultiselectWidget to make it inline if needed
+  // In Vue: .widget-multiselect__container { flex-direction: row; align-items: center; }
+  // We can pass className to MultiselectWidget
+}
+
+.aggregationFunctionInput {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 8px;
+}

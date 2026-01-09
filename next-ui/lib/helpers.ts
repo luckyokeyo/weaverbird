@@ -1,7 +1,6 @@
-import type { DataSetColumnType } from './dataset';
-import type { CustomDate } from './dates';
-import { isRelativeDate } from './dates';
-import type { AddTotalRowsStep, RollupStep } from './steps';
+import { DataSetColumnType } from './dataset';
+import { CustomDate, isRelativeDate } from './dates';
+import { AddTotalRowsStep, RollupStep } from './steps';
 
 type ValueType = number | boolean | string | null | object | CustomDate;
 /** We do not include AggregateStep as this step has some specifities that do

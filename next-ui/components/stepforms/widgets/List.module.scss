@@ -1,0 +1,87 @@
+@use '@/styles/variables';
+
+.widgetListContainer {
+  @include variables.form-widget__container;
+
+  // :global(.multiselect__tags) {
+  //   @include variables.form-widget__field;
+  //   background: #fff;
+  // }
+}
+
+.label {
+  @include variables.form-widget__label;
+}
+
+.widgetListBody {
+  background: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.widgetListChild {
+  width: 100%;
+  padding-right: 15px;
+  position: relative;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.widgetListComponent {
+  width: 98%;
+
+  // ::v-deep label {
+  //   width: 40%;
+  // }
+
+  // ::v-deep label + div {
+  //   width: 60%;
+  // }
+}
+
+.colored {
+  background-color: #f8f8f8;
+  padding: 8px 8px 0;
+}
+
+.widgetListComponentSep {
+  font-size: 14px;
+}
+
+.widgetListAddFieldset {
+  @include variables.button-default;
+  align-self: center;
+  background-color: #f8f8f8;
+  border: 1px dashed variables.$active-color;
+  color: variables.$active-color;
+  font-weight: 500;
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.widgetListAddFieldsetIcon {
+  color: variables.$active-color;
+}
+
+.widgetListIcon {
+  margin-top: 8px;
+  position: absolute;
+  right: 0;
+  top: calc(50% - 16px);
+  cursor: pointer;
+}
+
+.fieldMsgError {
+  color: variables.$error;
+  font-size: 12px;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

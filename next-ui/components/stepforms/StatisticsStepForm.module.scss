@@ -1,0 +1,67 @@
+@use '@/styles/variables';
+
+.statisticSection {
+  margin-bottom: 20px;
+}
+.statisticSectionHeader {
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.customQuantileInput {
+  padding: 10px;
+  width: 60px;
+  font-size: 16px;
+  margin-left: 20px;
+}
+
+.customQuantile {
+  display: flex;
+  align-items: center;
+}
+
+.customQuantileWidgetCheckbox {
+  align-items: center;
+  display: flex;
+  width: 30px;
+  margin: 0;
+  cursor: pointer;
+
+  &:active,
+  &:focus,
+  &:hover {
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    order: -1;
+  }
+
+  &::before {
+    box-shadow: 0 0 0 2px variables.$base-color inset;
+    height: 24px;
+    width: 24px;
+  }
+
+  &::after {
+    box-shadow: 3px -3px 0 0 variables.$base-color inset;
+    height: 8px;
+    margin-left: -18px;
+    margin-right: 6px;
+    margin-top: -3px;
+    opacity: 0.25;
+    transform: rotate(-45deg);
+    width: 12px;
+  }
+}
+
+.columnInput {
+  margin-bottom: 20px;
+}
+
+.groupbyColumnsInput {
+  margin-bottom: 20px;
+}
