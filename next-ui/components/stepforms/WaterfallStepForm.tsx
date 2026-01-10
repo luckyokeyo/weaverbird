@@ -177,7 +177,7 @@ const WaterfallStepForm: React.FC<BaseStepFormProps<WaterfallStep>> = (props) =>
       <div className={styles.backfillCheckbox}>
         <CheckboxWidget
           label="Backfill missing values"
-          value={editedStep.backfill}
+          value={editedStep.backfill || false}
           onChange={(val) => setEditedStep({ ...editedStep, backfill: val })}
         />
       </div>

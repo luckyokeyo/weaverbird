@@ -4,12 +4,13 @@ import ColumnPicker from '@/components/stepforms/ColumnPicker';
 import InputTextWidget from './InputText'; // Assuming InputText is migrated and compatible
 import styles from './Rename.module.scss';
 import { ErrorObject } from 'ajv';
+import { ValidationError } from '@/lib/translators/base';
 import { VariableDelimiters, VariablesBucket } from '@/types';
 
 interface RenameWidgetProps {
   value: string[];
   dataPath?: string;
-  errors?: ErrorObject[] | null;
+  errors?: ValidationError[] | null;
   availableVariables?: VariablesBucket;
   variableDelimiters?: VariableDelimiters;
   trustedVariableDelimiters?: VariableDelimiters;
@@ -45,8 +46,8 @@ const RenameWidget: React.FC<RenameWidgetProps> = ({
     onChange([newColumnName, newColumnToRename]);
   };
 
-  const handleNewColumnToRenameChange = (newColumnName: string) => {
-    onChange([columnToRename, newColumnName]);
+  const handleNewColumnToRenameChange = (newColumnName: string | undefined) => {
+    onChange([columnToRename, newColumnName || '']);
   };
 
   const duplicateColumnName = columnNames.includes(newColumnToRename)

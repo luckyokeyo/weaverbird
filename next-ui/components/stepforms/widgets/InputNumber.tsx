@@ -36,7 +36,7 @@ const InputNumberWidget: React.FC<InputNumberWidgetProps> = ({
 }) => {
   // Extract error
   const messageError = errors
-    ?.filter((err) => err.instancePath === dataPath || err.dataPath === dataPath)
+    ?.filter((err) => (err as any).instancePath === dataPath || (err as any).dataPath === dataPath)
     .map((err) => err.message)
     .join(', ');
 
@@ -52,7 +52,7 @@ const InputNumberWidget: React.FC<InputNumberWidgetProps> = ({
     <InputTextWidget
       name={name}
       placeholder={placeholder}
-      value={value}
+      value={value ?? ''}
       type="number"
       docUrl={docUrl}
       availableVariables={availableVariables}

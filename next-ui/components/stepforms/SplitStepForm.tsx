@@ -12,9 +12,14 @@ const SplitStepForm: React.FC<BaseStepFormProps<SplitStep>> = (props) => {
     onFormSaved,
   } = props;
 
+  const safeInitialValue = { ...initialStepValue, ...stepFormDefaults };
+  if (safeInitialValue.numberColsToKeep === undefined) {
+      (safeInitialValue as any).numberColsToKeep = 1;
+  }
+
   const { editedStep, setEditedStep, errors, submit } = useStepForm({
     ...props,
-    initialStepValue: { ...initialStepValue, ...stepFormDefaults },
+    initialStepValue: safeInitialValue as SplitStep,
   });
 
   return (
@@ -56,7 +61,7 @@ const SplitStepForm: React.FC<BaseStepFormProps<SplitStep>> = (props) => {
           name="Number of columns to keep:"
           value={editedStep.numberColsToKeep}
           placeholder="Enter an integer"
-          onChange={(val) => setEditedStep({ ...editedStep, numberColsToKeep: val ? Number(val) : undefined })}
+          onChange={(val) => setEditedStep({ ...editedStep, numberColsToKeep: val ? Number(val) : 1 })}
           // dataPath=".numberColsToKeep"
           // errors={errors}
         />

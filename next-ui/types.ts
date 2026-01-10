@@ -6,3 +6,7 @@ export type { ColumnValueStat } from './lib/dataset/helpers';
 export type { PaginationContext } from './lib/dataset/pagination';
 export type { DataSetColumnType, DataSetColumn, DataSet } from './lib/dataset';
 export type { BackendError, BackendWarning, BackendResponse, BackendService } from './lib/backend';
+
+export type ColumnTypeMapping = {
+  [colName: string]: 'boolean' | 'date' | 'float' | 'integer' | 'string' | 'object' | undefined;
+};

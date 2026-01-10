@@ -13,7 +13,7 @@ interface GranularityOption {
 
 const DateGranularityStepForm: React.FC<BaseStepFormProps<DateGranularityStep>> = (props) => {
   const {
-    initialStepValue = { name: 'dategranularity', column: '', granularity: '' },
+    initialStepValue = { name: 'dategranularity', column: '', granularity: 'year' },
     stepFormDefaults,
     onFormSaved,
   } = props;
@@ -27,9 +27,15 @@ const DateGranularityStepForm: React.FC<BaseStepFormProps<DateGranularityStep>> 
     { info: 'day', label: 'day' },
   ];
 
+  // Ensure granularity is valid
+  const safeInitialValue = { ...initialStepValue, ...stepFormDefaults };
+  if (!safeInitialValue.granularity) {
+      (safeInitialValue as any).granularity = 'year';
+  }
+
   const { editedStep, setEditedStep, errors, submit } = useStepForm({
     ...props,
-    initialStepValue: { ...initialStepValue, ...stepFormDefaults },
+    initialStepValue: safeInitialValue as DateGranularityStep,
   });
 
   const duplicateColumnName =
@@ -42,7 +48,7 @@ const DateGranularityStepForm: React.FC<BaseStepFormProps<DateGranularityStep>> 
   const handleGranularityChange = (val: GranularityOption | string) => {
       // Autocomplete returns string or option object
       const info = typeof val === 'string' ? val : val.info;
-      setEditedStep({ ...editedStep, granularity: info });
+      setEditedStep({ ...editedStep, granularity: info as DateGranularity });
   };
 
   return (

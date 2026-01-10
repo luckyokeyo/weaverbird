@@ -28,9 +28,7 @@ const ToDateStepForm: React.FC<BaseStepFormProps<ToDateStep>> = (props) => {
   } = props;
 
   const translatorName = 'pandas'; // Assuming default or passed via props (not in BaseStepFormProps yet)
-  // Actually BaseStepFormProps doesn't have translator, but the Vue component had a prop.
-  // We can assume 'pandas' or add it to props.
-  // Let's assume 'pandas' for now as it's the default in Vue.
+  const translatorNameStr = translatorName as string;
 
   const formatOptions: FormatOption[] = [
     { format: 'guess', label: 'Try to guess', example: '' },
@@ -141,15 +139,8 @@ const ToDateStepForm: React.FC<BaseStepFormProps<ToDateStep>> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editedStep.format]);
 
-  const updateStepFormat = (newFormat: FormatOption | string) => {
-    // Autocomplete might return object or string
-    // Here we use trackBy='format' so value will be string if we use formatted options?
-    // Wait, AutocompleteWidget's onChange returns the original option object or string.
-
-    // If we use trackBy='format' in AutocompleteWidget, it returns the value of that key?
-    // No, onChange returns `newValue ? newValue.original : undefined`.
-    // So it returns FormatOption object.
-
+  const updateStepFormat = (newFormat: FormatOption | string | null | undefined | object) => {
+    if (!newFormat) return;
     const formatOpt = typeof newFormat === 'string'
         ? formatOptions.find(f => f.format === newFormat)
         : newFormat as FormatOption;
@@ -196,7 +187,7 @@ const ToDateStepForm: React.FC<BaseStepFormProps<ToDateStep>> = (props) => {
         />
       </div>
 
-      {translatorName !== 'mongo36' && (
+      {translatorNameStr !== 'mongo36' && (
         <div className={styles.format}>
             <AutocompleteWidget
             name="Date format:"
@@ -211,7 +202,7 @@ const ToDateStepForm: React.FC<BaseStepFormProps<ToDateStep>> = (props) => {
         </div>
       )}
 
-      {translatorName !== 'mongo36' && useCustomFormat && (
+      {translatorNameStr !== 'mongo36' && useCustomFormat && (
         <div className={styles.customFormat}>
             <InputTextWidget
             name="Custom date format:"

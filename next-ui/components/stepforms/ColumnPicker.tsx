@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import AutocompleteWidget from './widgets/Autocomplete';
 import { VariableDelimiters, VariablesBucket } from '@/types';
-import { ErrorObject } from 'ajv';
+import { ValidationError } from '@/lib/translators/base';
 
 // We need to map ajv errors to a format that AutocompleteWidget expects, if needed.
 // But AutocompleteWidget takes messageError (string).
@@ -11,7 +11,7 @@ import { ErrorObject } from 'ajv';
 interface ColumnPickerProps {
   name?: string;
   placeholder?: string;
-  errors?: ErrorObject[] | null;
+  errors?: ValidationError[] | null;
   dataPath?: string;
   value?: string;
   availableVariables?: VariablesBucket;
@@ -20,6 +20,7 @@ interface ColumnPickerProps {
   syncWithSelectedColumn?: boolean;
   selectedColumns?: string[];
   columnNames?: string[];
+  options?: string[];
   onChange: (value: string) => void;
   onSetSelectedColumns?: (args: { column: string }) => void;
 }
@@ -36,6 +37,7 @@ const ColumnPicker: React.FC<ColumnPickerProps> = ({
   syncWithSelectedColumn = true,
   selectedColumns = [],
   columnNames = [],
+  options = [],
   onChange,
   onSetSelectedColumns,
 }) => {
@@ -67,7 +69,7 @@ const ColumnPicker: React.FC<ColumnPickerProps> = ({
 
   // Extract error message for this field
   const errorMessage = errors
-    ?.filter((err) => err.instancePath === dataPath || err.dataPath === dataPath)
+    ?.filter((err) => (err as any).instancePath === dataPath || err.dataPath === dataPath)
     .map((err) => err.message)
     .join(', ');
 
@@ -75,7 +77,7 @@ const ColumnPicker: React.FC<ColumnPickerProps> = ({
     <AutocompleteWidget
       name={name}
       value={value || ''}
-      options={columnNames}
+      options={columnNames.length > 0 ? columnNames : options}
       onChange={handleValueChanged}
       placeholder={placeholder}
       // dataPath={dataPath} // Not passed to AutocompleteWidget in Next implementation

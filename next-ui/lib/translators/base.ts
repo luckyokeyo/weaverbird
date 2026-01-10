@@ -10,7 +10,7 @@
  * `lib/matchers/OutputStep` type or an array of this type.
  *
  */
-// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+
 import type { OutputStep, StepMatcher, TransformStep } from '@/lib/matcher';
 import type * as S from '@/lib/steps';
 
@@ -79,7 +79,7 @@ export class BaseTranslator implements StepMatcher<OutputStep> {
    * `supportedSteps` returns the list of steps supported by this translator class.
    */
   get supportedSteps(): S.PipelineStepName[] {
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+
     return transformerSteps()
       .filter((stepname) => this.constructor.prototype[stepname].__vqb_step_supported__ !== false)
       .sort();
@@ -89,7 +89,7 @@ export class BaseTranslator implements StepMatcher<OutputStep> {
    * `unsupportedSteps` returns the list of steps _not_ supported by this translator class.
    */
   get unsupportedSteps(): S.PipelineStepName[] {
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+
     return transformerSteps()
       .filter((stepname) => this.constructor.prototype[stepname].__vqb_step_supported__ === false)
       .sort();
@@ -104,7 +104,7 @@ export class BaseTranslator implements StepMatcher<OutputStep> {
     return !this.unsupportedSteps.includes(stepname);
   }
 
-  /* eslint-disable no-unused-vars, @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function */
+  /* eslint-disable @typescript-eslint/no-unused-vars */
   @unsupported
   absolutevalue(step: Readonly<S.AbsoluteValueStep>) {}
 
@@ -258,7 +258,7 @@ export class BaseTranslator implements StepMatcher<OutputStep> {
   @unsupported
   waterfall(step: Readonly<S.WaterfallStep>) {}
 
-  /* eslint-enable no-unused-vars, @typescript-eslint/no-unused-vars */
+  /* eslint-enable @typescript-eslint/no-unused-vars */
 
   /**
    * translates an input pipeline into a list of steps that makes sense for the

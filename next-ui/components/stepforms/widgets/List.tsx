@@ -4,7 +4,7 @@ import { faPlusCircle, faTrashAlt, faExclamationCircle } from '@fortawesome/free
 import classNames from 'classnames';
 import styles from './List.module.scss';
 import { VariableDelimiters, VariablesBucket } from '@/types';
-import { ErrorObject } from 'ajv';
+import { ValidationError } from '@/lib/translators/base';
 import cloneDeep from 'lodash/cloneDeep';
 
 // NOTE: We need to import the FontAwesome icons if they are not globally available.
@@ -22,7 +22,7 @@ interface ListWidgetProps {
   widget?: React.FC<any>; // Component to render for each item
   automaticNewField?: boolean;
   defaultItem?: any;
-  errors?: ErrorObject[] | null;
+  errors?: ValidationError[] | null;
   dataPath?: string;
   availableVariables?: VariablesBucket;
   variableDelimiters?: VariableDelimiters;
@@ -104,7 +104,7 @@ const ListWidget: React.FC<ListWidgetProps> = ({
 
   // Find error for the list itself
   const messageError = errors
-    ?.filter((err) => err.instancePath === dataPath || err.dataPath === dataPath)
+    ?.filter((err) => (err as any).instancePath === dataPath || err.dataPath === dataPath)
     .map((err) => err.message)
     .join(', ');
 
