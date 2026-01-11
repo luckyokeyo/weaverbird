@@ -80,7 +80,7 @@ const DissolveStepForm: React.FC<BaseStepFormProps<DissolveStep>> = (props) => {
       <div className={styles.keepNullsCheckbox}>
         <CheckboxWidget
           label="Include null values in results"
-          value={editedStep.includeNulls}
+          value={editedStep.includeNulls || false}
           onChange={(val) => setEditedStep({ ...editedStep, includeNulls: val })}
         />
       </div>

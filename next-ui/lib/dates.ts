@@ -115,7 +115,7 @@ export const dateRangeToString = (dateRange: DateRange, locale?: LocaleIdentifie
         // Abbreviated date, e.g. "Oct 20, 2021"
         return dt.toLocaleString(DateTime.DATE_MED);
       }
-    // eslint-disable-next-line no-fallthrough
+
     default:
       // Multiple days
       // E.g.

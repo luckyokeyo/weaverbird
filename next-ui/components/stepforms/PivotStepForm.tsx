@@ -5,6 +5,7 @@ import ColumnPicker from './ColumnPicker';
 import AutocompleteWidget from './widgets/Autocomplete';
 import styles from './PivotStepForm.module.scss';
 import { PivotStep } from '@/lib/steps';
+import { ValidationError } from '@/lib/translators/base';
 
 const PivotStepForm: React.FC<BaseStepFormProps<PivotStep>> = (props) => {
   const {
@@ -30,11 +31,9 @@ const PivotStepForm: React.FC<BaseStepFormProps<PivotStep>> = (props) => {
     let isValid = baseValidate();
     const { columnToPivot, valueColumn, index } = editedStep;
 
-    const extraErrors = [];
+    const extraErrors: ValidationError[] = [];
     if (columnToPivot === valueColumn || index.includes(columnToPivot)) {
       extraErrors.push({
-        params: {},
-        schemaPath: '.columnToPivot',
         keyword: 'columnNameConflict',
         dataPath: '.columnToPivot',
         message: `Column name ${columnToPivot} is used at least twice but should be unique`,
@@ -42,8 +41,6 @@ const PivotStepForm: React.FC<BaseStepFormProps<PivotStep>> = (props) => {
       isValid = false;
     } else if (index.includes(valueColumn)) {
         extraErrors.push({
-        params: {},
-        schemaPath: '.valueColumn',
         keyword: 'columnNameConflict',
         dataPath: '.valueColumn',
         message: `Column name ${valueColumn} is used at least twice but should be unique`,

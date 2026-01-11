@@ -100,7 +100,8 @@ const FromDateStepForm: React.FC<BaseStepFormProps<FromDateStep>> = (props) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editedStep.format]);
 
-  const updateStepFormat = (newFormat: FormatOption | string) => {
+  const updateStepFormat = (newFormat: FormatOption | string | null | undefined | object) => {
+    if (!newFormat) return;
     const formatOpt = typeof newFormat === 'string'
         ? formatOptions.find(f => f.format === newFormat)
         : newFormat as FormatOption;

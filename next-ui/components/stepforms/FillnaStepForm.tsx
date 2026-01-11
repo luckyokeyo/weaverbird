@@ -64,7 +64,7 @@ const FillnaStepForm: React.FC<BaseStepFormProps<FillnaStep>> = (props) => {
       <div className={styles.valueInput}>
         <InputTextWidget
           name="With..."
-          value={editedStep.value}
+          value={editedStep.value as any}
           placeholder="Enter a value"
           onChange={(val) => setEditedStep({ ...editedStep, value: val || '' })}
           // dataPath=".value"

@@ -7,14 +7,20 @@ import { ConvertStep } from '@/lib/steps';
 
 const ConvertStepForm: React.FC<BaseStepFormProps<ConvertStep>> = (props) => {
   const {
-    initialStepValue = { name: 'convert', columns: [], dataType: '' },
+    initialStepValue = { name: 'convert', columns: [], dataType: 'text' },
     stepFormDefaults,
     onFormSaved,
   } = props;
 
+  // We need to ensure dataType is valid, if it comes as empty string it might fail validation but we can default it.
+  const safeInitialValue = { ...initialStepValue, ...stepFormDefaults };
+  if (!safeInitialValue.dataType) {
+     (safeInitialValue as any).dataType = 'text'; // Default to text to satisfy type, user will change it.
+  }
+
   const { editedStep, setEditedStep, errors, submit } = useStepForm({
     ...props,
-    initialStepValue: { ...initialStepValue, ...stepFormDefaults },
+    initialStepValue: safeInitialValue as ConvertStep,
   });
 
   const dataTypes = ['integer', 'float', 'text', 'date', 'boolean'];
@@ -45,7 +51,7 @@ const ConvertStepForm: React.FC<BaseStepFormProps<ConvertStep>> = (props) => {
           name="To data type:"
           value={editedStep.dataType}
           options={dataTypes}
-          onChange={(val) => setEditedStep({ ...editedStep, dataType: val as string })}
+          onChange={(val) => setEditedStep({ ...editedStep, dataType: val as any })}
           placeholder="Select a data type"
           dataPath=".dataType"
           // errors={errors}

@@ -226,11 +226,12 @@ export class PipelineInterpolator implements StepMatcher<S.PipelineStep> {
 
     // Legacy syntax
     if ('valueColumn' in step) {
+      const s = step as any;
       return {
         ...interpolatedPartialStep,
-        valueColumn: _interpolate(this.interpolateFunc, step.valueColumn, this.context),
-        newColumn: _interpolate(this.interpolateFunc, step.newColumn, this.context),
-      };
+        valueColumn: _interpolate(this.interpolateFunc, s.valueColumn, this.context),
+        newColumn: _interpolate(this.interpolateFunc, s.newColumn, this.context),
+      } as unknown as S.CumSumStep;
     }
 
     return {

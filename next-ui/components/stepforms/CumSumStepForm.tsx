@@ -20,15 +20,15 @@ const CumSumStepForm: React.FC<BaseStepFormProps<CumSumStep>> = (props) => {
       if ('valueColumn' in initial && (initial as any).valueColumn) {
           const valueColumn = (initial as any).valueColumn;
           delete (initial as any).valueColumn;
-          initial.toCumSum = [[valueColumn, '']];
+          (initial as any).toCumSum = [[valueColumn, '']];
 
           if ('newColumn' in initial && (initial as any).newColumn) {
               const newColumn = (initial as any).newColumn;
               delete (initial as any).newColumn;
-              initial.toCumSum[0][1] = newColumn;
+              (initial as any).toCumSum[0][1] = newColumn;
           }
       }
-      return initial;
+      return initial as CumSumStep;
   };
 
   const { editedStep, setEditedStep, errors, submit } = useStepForm({

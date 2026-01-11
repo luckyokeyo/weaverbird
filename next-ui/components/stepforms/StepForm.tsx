@@ -13,7 +13,7 @@ import { VariableDelimiters, VariablesBucket, ColumnTypeMapping } from '@/types'
 import { ValidationError } from '@/lib/translators/base';
 
 // We need to import package.json to get the version
-import pkg from '../../../package.json';
+import pkg from '../../package.json';
 const version = pkg.version;
 
 // Define props for StepForm
@@ -69,7 +69,7 @@ export function useStepForm<StepType extends PipelineStep>({
     addAjvKeywords(ajv);
     const ajvValidator: ValidateFunction = ajv.compile(model);
 
-    const interpolator = new PipelineInterpolator(interpolateFunc, variables);
+    const interpolator = new PipelineInterpolator(interpolateFunc, variables || {});
 
     // Interpolate and validate
     const interpolatedStep = interpolator.interpolateStep(stepToValidate);

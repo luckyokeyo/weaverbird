@@ -27,6 +27,7 @@ const UnpivotStepForm: React.FC<BaseStepFormProps<UnpivotStep>> = (props) => {
   });
 
   const translator = 'pandas'; // Assuming default or passed via props
+  const translatorStr = translator as string;
 
   const handleSubmit = () => {
     const step = cloneDeep(editedStep);
@@ -69,7 +70,7 @@ const UnpivotStepForm: React.FC<BaseStepFormProps<UnpivotStep>> = (props) => {
         />
       </div>
 
-      {translator !== 'snowflake' && (
+      {translatorStr !== 'snowflake' && (
         <div className={styles.dropnaCheckbox}>
             <CheckboxWidget
                 label="Drop null values"

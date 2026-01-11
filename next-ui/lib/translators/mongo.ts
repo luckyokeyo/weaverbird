@@ -559,7 +559,8 @@ function transformCumSum(step: Readonly<S.CumSumStep>): MongoStep {
   // For retrocompatibility with old configurations
   let toCumSum: string[][];
   if ('valueColumn' in step) {
-    toCumSum = [[step.valueColumn, step.newColumn ?? `${step.valueColumn}_CUMSUM`]];
+    const s = step as any;
+    toCumSum = [[s.valueColumn, s.newColumn ?? `${s.valueColumn}_CUMSUM`]];
   } else {
     toCumSum = step.toCumSum;
   }

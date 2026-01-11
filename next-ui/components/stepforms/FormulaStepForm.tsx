@@ -7,7 +7,7 @@ import { FormulaStep } from '@/lib/steps';
 // We should check if we can import it.
 import { parse } from 'mathjs';
 import { escapeForUseInRegExp } from '@/lib/helpers';
-import { ajvErrorsToValidationError, ValidationError } from '@/lib/translators/base';
+ import { ValidationError } from '@/lib/translators/base';
 
 const FormulaStepForm: React.FC<BaseStepFormProps<FormulaStep>> = (props) => {
   const {
@@ -34,7 +34,7 @@ const FormulaStepForm: React.FC<BaseStepFormProps<FormulaStep>> = (props) => {
     // If we want to add errors, we should do it after.
 
     let isValid = baseValidate(editedStep);
-    let extraErrors: ValidationError[] = [];
+    const extraErrors: ValidationError[] = [];
 
     const formula = editedStep.formula;
     try {
